@@ -1,0 +1,604 @@
++ PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:
++ '[' '!' -f /home/uli/Project/gnucash-build/gnucash-build.log ']'
++ doLog 'Restart script'
++ echo Restart script
+Restart script
++ '[' '!' -f /home/uli/Project/gnucash-build/update-state.txt ']'
++ doLog 'UpdateState file does not exists. Create it'
++ echo UpdateState file does not exists. Create it
+UpdateState file does not exists. Create it
++ touch /home/uli/Project/gnucash-build/update-state.txt
++ setUpdateState 1
++ UPDATE_STATE=1
++ doLog 'Set the update State to 1'
++ echo Set the update State to 1
+Set the update State to 1
++ echo 1
++ case $UPDATE_STATE in
++ doLogUpdateState 'UPDATE-STATE 1: Update packages list'
++ doLog '########## UPDATE-STATE 1: Update packages list ##########'
++ echo '##########' UPDATE-STATE 1: Update packages list '##########'
+########## UPDATE-STATE 1: Update packages list ##########
++ apt-get -y update
+Hit:1 http://archive.ubuntu.com/ubuntu xenial InRelease
+Hit:2 http://archive.ubuntu.com/ubuntu xenial-updates InRelease
+Hit:3 http://archive.ubuntu.com/ubuntu xenial-backports InRelease
+Hit:4 http://archive.ubuntu.com/ubuntu xenial-security InRelease
+Reading package lists...
++ sleep 5
++ doLog '==> Performing upgrade (all packages and kernel)'
++ echo '==>' Performing upgrade '(all' packages and 'kernel)'
+==> Performing upgrade (all packages and kernel)
++ apt-get -q -y -o Dpkg::Options::=--force-confdef -o Dpkg::Options::=--force-confold upgrade
+Reading package lists...
+Building dependency tree...
+Reading state information...
+Calculating upgrade...
+The following packages have been kept back:
+  libmm-glib0 libqmi-proxy modemmanager
+The following packages will be upgraded:
+  grub-common grub-pc grub-pc-bin grub2-common
+4 upgraded, 0 newly installed, 0 to remove and 3 not upgraded.
+Need to get 3.302 kB of archives.
+After this operation, 0 B of additional disk space will be used.
+Get:1 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 grub-pc amd64 2.02~beta2-36ubuntu3.16 [197 kB]
+Get:2 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 grub-pc-bin amd64 2.02~beta2-36ubuntu3.16 [889 kB]
+Get:3 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 grub2-common amd64 2.02~beta2-36ubuntu3.16 [510 kB]
+Get:4 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 grub-common amd64 2.02~beta2-36ubuntu3.16 [1.706 kB]
+Preconfiguring packages ...
+Fetched 3.302 kB in 0s (6.979 kB/s)
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 208107 files and directories currently installed.)
+Preparing to unpack .../grub-pc_2.02~beta2-36ubuntu3.16_amd64.deb ...
+Unpacking grub-pc (2.02~beta2-36ubuntu3.16) over (2.02~beta2-36ubuntu3.15) ...
+Preparing to unpack .../grub-pc-bin_2.02~beta2-36ubuntu3.16_amd64.deb ...
+Unpacking grub-pc-bin (2.02~beta2-36ubuntu3.16) over (2.02~beta2-36ubuntu3.15) ...
+Preparing to unpack .../grub2-common_2.02~beta2-36ubuntu3.16_amd64.deb ...
+Unpacking grub2-common (2.02~beta2-36ubuntu3.16) over (2.02~beta2-36ubuntu3.15) ...
+Preparing to unpack .../grub-common_2.02~beta2-36ubuntu3.16_amd64.deb ...
+Unpacking grub-common (2.02~beta2-36ubuntu3.16) over (2.02~beta2-36ubuntu3.15) ...
+Processing triggers for man-db (2.7.5-1) ...
+Processing triggers for install-info (6.1.0.dfsg.1-5) ...
+Processing triggers for systemd (229-4ubuntu21.1) ...
+Processing triggers for ureadahead (0.100.0-19) ...
+Setting up grub-common (2.02~beta2-36ubuntu3.16) ...
+update-rc.d: warning: start and stop actions are no longer supported; falling back to defaults
+Setting up grub2-common (2.02~beta2-36ubuntu3.16) ...
+Setting up grub-pc-bin (2.02~beta2-36ubuntu3.16) ...
+Setting up grub-pc (2.02~beta2-36ubuntu3.16) ...
+Installing for i386-pc platform.
+grub-install: error: cannot find a GRUB drive for /dev/disk/by-id/ata-VBOX_HARDDISK_VBf218d058-66f39a22.  Check your device.map.
+Generating grub configuration file ...
+Warning: Setting GRUB_TIMEOUT to a non-zero value when GRUB_HIDDEN_TIMEOUT is set is no longer supported.
+Found linux image: /boot/vmlinuz-4.4.0-112-generic
+Found initrd image: /boot/initrd.img-4.4.0-112-generic
+Found linux image: /boot/vmlinuz-4.4.0-21-generic
+Found initrd image: /boot/initrd.img-4.4.0-21-generic
+Found memtest86+ image: /boot/memtest86+.elf
+Found memtest86+ image: /boot/memtest86+.bin
+done
++ sleep 5
++ doLog '==> Performing dist-upgrade (all packages and kernel)'
++ echo '==>' Performing dist-upgrade '(all' packages and 'kernel)'
+==> Performing dist-upgrade (all packages and kernel)
++ apt-get -q -y -o Dpkg::Options::=--force-confdef -o Dpkg::Options::=--force-confold dist-upgrade
+Reading package lists...
+Building dependency tree...
+Reading state information...
+Calculating upgrade...
+The following NEW packages will be installed:
+  libqmi-glib5
+The following packages will be upgraded:
+  libmm-glib0 libqmi-proxy modemmanager
+3 upgraded, 1 newly installed, 0 to remove and 0 not upgraded.
+Need to get 1.132 kB of archives.
+After this operation, 2.233 kB of additional disk space will be used.
+Get:1 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libmm-glib0 amd64 1.6.4-1ubuntu0.16.04.1 [163 kB]
+Get:2 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libqmi-glib5 amd64 1.16.2-1ubuntu0.16.04.1 [360 kB]
+Get:3 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libqmi-proxy amd64 1.16.2-1ubuntu0.16.04.1 [5.486 B]
+Get:4 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 modemmanager amd64 1.6.4-1ubuntu0.16.04.1 [604 kB]
+Fetched 1.132 kB in 0s (3.593 kB/s)
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 208107 files and directories currently installed.)
+Preparing to unpack .../libmm-glib0_1.6.4-1ubuntu0.16.04.1_amd64.deb ...
+Unpacking libmm-glib0:amd64 (1.6.4-1ubuntu0.16.04.1) over (1.4.12-1ubuntu1) ...
+Selecting previously unselected package libqmi-glib5:amd64.
+Preparing to unpack .../libqmi-glib5_1.16.2-1ubuntu0.16.04.1_amd64.deb ...
+Unpacking libqmi-glib5:amd64 (1.16.2-1ubuntu0.16.04.1) ...
+Preparing to unpack .../libqmi-proxy_1.16.2-1ubuntu0.16.04.1_amd64.deb ...
+Unpacking libqmi-proxy (1.16.2-1ubuntu0.16.04.1) over (1.12.6-1) ...
+Preparing to unpack .../modemmanager_1.6.4-1ubuntu0.16.04.1_amd64.deb ...
+Unpacking modemmanager (1.6.4-1ubuntu0.16.04.1) over (1.4.12-1ubuntu1) ...
+Processing triggers for libc-bin (2.23-0ubuntu10) ...
+Processing triggers for dbus (1.10.6-1ubuntu3.3) ...
+Processing triggers for hicolor-icon-theme (0.15-0ubuntu1) ...
+Processing triggers for man-db (2.7.5-1) ...
+Setting up libmm-glib0:amd64 (1.6.4-1ubuntu0.16.04.1) ...
+Setting up libqmi-glib5:amd64 (1.16.2-1ubuntu0.16.04.1) ...
+Setting up libqmi-proxy (1.16.2-1ubuntu0.16.04.1) ...
+Setting up modemmanager (1.6.4-1ubuntu0.16.04.1) ...
+Installing new version of config file /etc/dbus-1/system.d/org.freedesktop.ModemManager1.conf ...
+Processing triggers for libc-bin (2.23-0ubuntu10) ...
+Processing triggers for dbus (1.10.6-1ubuntu3.3) ...
++ sleep 5
++ apt-get -y autoremove
+Reading package lists...
+Building dependency tree...
+Reading state information...
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
++ doLog '==> Finished apt-get upgrade. Reboot now'
++ echo '==>' Finished apt-get upgrade. Reboot now
+==> Finished apt-get upgrade. Reboot now
++ setUpdateState 2
++ UPDATE_STATE=2
++ doLog 'Set the update State to 2'
++ echo Set the update State to 2
+Set the update State to 2
++ echo 2
++ doLogUpdateState 'UPDATE-STATE 2'
++ doLog '########## UPDATE-STATE 2 ##########'
++ echo '##########' UPDATE-STATE 2 '##########'
+########## UPDATE-STATE 2 ##########
++ package_exists openjdk-8-jdk
++ dpkg -s openjdk-8-jdk
++ return 1
++ apt-get -q -y -o Dpkg::Options::=--force-confdef -o Dpkg::Options::=--force-confold install openjdk-8-jdk
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following additional packages will be installed:
+  ca-certificates-java fonts-dejavu-extra java-common libgif7 libice-dev
+  libsm-dev libxt-dev openjdk-8-jdk-headless openjdk-8-jre
+  openjdk-8-jre-headless
+Suggested packages:
+  default-jre libice-doc libsm-doc libxt-doc openjdk-8-demo openjdk-8-source
+  visualvm icedtea-8-plugin fonts-ipafont-gothic fonts-ipafont-mincho
+  fonts-wqy-microhei fonts-wqy-zenhei fonts-indic
+The following NEW packages will be installed:
+  ca-certificates-java fonts-dejavu-extra java-common libgif7 libice-dev
+  libsm-dev libxt-dev openjdk-8-jdk openjdk-8-jdk-headless openjdk-8-jre
+  openjdk-8-jre-headless
+0 upgraded, 11 newly installed, 0 to remove and 0 not upgraded.
+Need to get 38,0 MB of archives.
+After this operation, 148 MB of additional disk space will be used.
+Get:1 http://archive.ubuntu.com/ubuntu xenial/main amd64 java-common all 0.56ubuntu2 [7.742 B]
+Get:2 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 openjdk-8-jre-headless amd64 8u151-b12-0ubuntu0.16.04.2 [27,0 MB]
+Get:3 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 ca-certificates-java all 20160321ubuntu1 [12,5 kB]
+Get:4 http://archive.ubuntu.com/ubuntu xenial/main amd64 fonts-dejavu-extra all 2.35-1 [1.749 kB]
+Get:5 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libgif7 amd64 5.1.4-0.3~16.04 [30,5 kB]
+Get:6 http://archive.ubuntu.com/ubuntu xenial/main amd64 libice-dev amd64 2:1.0.9-1 [44,9 kB]
+Get:7 http://archive.ubuntu.com/ubuntu xenial/main amd64 libsm-dev amd64 2:1.2.2-1 [16,2 kB]
+Get:8 http://archive.ubuntu.com/ubuntu xenial/main amd64 libxt-dev amd64 1:1.1.5-0ubuntu1 [394 kB]
+Get:9 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 openjdk-8-jre amd64 8u151-b12-0ubuntu0.16.04.2 [69,5 kB]
+Get:10 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 openjdk-8-jdk-headless amd64 8u151-b12-0ubuntu0.16.04.2 [8.198 kB]
+Get:11 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 openjdk-8-jdk amd64 8u151-b12-0ubuntu0.16.04.2 [451 kB]
+Fetched 38,0 MB in 7s (5.017 kB/s)
+Selecting previously unselected package java-common.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 208122 files and directories currently installed.)
+Preparing to unpack .../java-common_0.56ubuntu2_all.deb ...
+Unpacking java-common (0.56ubuntu2) ...
+Selecting previously unselected package openjdk-8-jre-headless:amd64.
+Preparing to unpack .../openjdk-8-jre-headless_8u151-b12-0ubuntu0.16.04.2_amd64.deb ...
+Unpacking openjdk-8-jre-headless:amd64 (8u151-b12-0ubuntu0.16.04.2) ...
+Selecting previously unselected package ca-certificates-java.
+Preparing to unpack .../ca-certificates-java_20160321ubuntu1_all.deb ...
+Unpacking ca-certificates-java (20160321ubuntu1) ...
+Selecting previously unselected package fonts-dejavu-extra.
+Preparing to unpack .../fonts-dejavu-extra_2.35-1_all.deb ...
+Unpacking fonts-dejavu-extra (2.35-1) ...
+Selecting previously unselected package libgif7:amd64.
+Preparing to unpack .../libgif7_5.1.4-0.3~16.04_amd64.deb ...
+Unpacking libgif7:amd64 (5.1.4-0.3~16.04) ...
+Selecting previously unselected package libice-dev:amd64.
+Preparing to unpack .../libice-dev_2%3a1.0.9-1_amd64.deb ...
+Unpacking libice-dev:amd64 (2:1.0.9-1) ...
+Selecting previously unselected package libsm-dev:amd64.
+Preparing to unpack .../libsm-dev_2%3a1.2.2-1_amd64.deb ...
+Unpacking libsm-dev:amd64 (2:1.2.2-1) ...
+Selecting previously unselected package libxt-dev:amd64.
+Preparing to unpack .../libxt-dev_1%3a1.1.5-0ubuntu1_amd64.deb ...
+Unpacking libxt-dev:amd64 (1:1.1.5-0ubuntu1) ...
+Selecting previously unselected package openjdk-8-jre:amd64.
+Preparing to unpack .../openjdk-8-jre_8u151-b12-0ubuntu0.16.04.2_amd64.deb ...
+Unpacking openjdk-8-jre:amd64 (8u151-b12-0ubuntu0.16.04.2) ...
+Selecting previously unselected package openjdk-8-jdk-headless:amd64.
+Preparing to unpack .../openjdk-8-jdk-headless_8u151-b12-0ubuntu0.16.04.2_amd64.deb ...
+Unpacking openjdk-8-jdk-headless:amd64 (8u151-b12-0ubuntu0.16.04.2) ...
+Selecting previously unselected package openjdk-8-jdk:amd64.
+Preparing to unpack .../openjdk-8-jdk_8u151-b12-0ubuntu0.16.04.2_amd64.deb ...
+Unpacking openjdk-8-jdk:amd64 (8u151-b12-0ubuntu0.16.04.2) ...
+Processing triggers for man-db (2.7.5-1) ...
+Processing triggers for ca-certificates (20170717~16.04.1) ...
+Updating certificates in /etc/ssl/certs...
+0 added, 0 removed; done.
+Running hooks in /etc/ca-certificates/update.d...
+done.
+Processing triggers for fontconfig (2.11.94-0ubuntu1.1) ...
+Processing triggers for libc-bin (2.23-0ubuntu10) ...
+Processing triggers for gnome-menus (3.13.3-6ubuntu3.1) ...
+Processing triggers for desktop-file-utils (0.22-1ubuntu5.1) ...
+Processing triggers for mime-support (3.59ubuntu1) ...
+Processing triggers for hicolor-icon-theme (0.15-0ubuntu1) ...
+Setting up java-common (0.56ubuntu2) ...
+Setting up fonts-dejavu-extra (2.35-1) ...
+Setting up libgif7:amd64 (5.1.4-0.3~16.04) ...
+Setting up libice-dev:amd64 (2:1.0.9-1) ...
+Setting up libsm-dev:amd64 (2:1.2.2-1) ...
+Setting up libxt-dev:amd64 (1:1.1.5-0ubuntu1) ...
+Setting up openjdk-8-jre-headless:amd64 (8u151-b12-0ubuntu0.16.04.2) ...
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/rmid to provide /usr/bin/rmid (rmid) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java to provide /usr/bin/java (java) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/keytool to provide /usr/bin/keytool (keytool) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/jjs to provide /usr/bin/jjs (jjs) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/pack200 to provide /usr/bin/pack200 (pack200) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/rmiregistry to provide /usr/bin/rmiregistry (rmiregistry) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/unpack200 to provide /usr/bin/unpack200 (unpack200) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/orbd to provide /usr/bin/orbd (orbd) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/servertool to provide /usr/bin/servertool (servertool) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/tnameserv to provide /usr/bin/tnameserv (tnameserv) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jexec to provide /usr/bin/jexec (jexec) in auto mode
+Setting up ca-certificates-java (20160321ubuntu1) ...
+Adding debian:Cybertrust_Global_Root.pem
+Adding debian:TURKTRUST_Certificate_Services_Provider_Root_2007.pem
+Adding debian:LuxTrust_Global_Root_2.pem
+Adding debian:DigiCert_Assured_ID_Root_G3.pem
+Adding debian:Staat_der_Nederlanden_Root_CA_-_G2.pem
+Adding debian:OpenTrust_Root_CA_G1.pem
+Adding debian:Amazon_Root_CA_1.pem
+Adding debian:ISRG_Root_X1.pem
+Adding debian:QuoVadis_Root_CA_2_G3.pem
+Adding debian:Go_Daddy_Root_Certificate_Authority_-_G2.pem
+Adding debian:Certum_Root_CA.pem
+Adding debian:COMODO_Certification_Authority.pem
+Adding debian:SwissSign_Silver_CA_-_G2.pem
+Adding debian:Chambers_of_Commerce_Root_-_2008.pem
+Adding debian:Verisign_Class_3_Public_Primary_Certification_Authority_-_G3.pem
+Adding debian:DigiCert_Trusted_Root_G4.pem
+Adding debian:Certplus_Root_CA_G1.pem
+Adding debian:TUBITAK_Kamu_SM_SSL_Kok_Sertifikasi_-_Surum_1.pem
+Adding debian:Entrust_Root_Certification_Authority_-_EC1.pem
+Adding debian:GlobalSign_Root_CA_-_R3.pem
+Adding debian:Deutsche_Telekom_Root_CA_2.pem
+Adding debian:VeriSign_Class_3_Public_Primary_Certification_Authority_-_G4.pem
+Adding debian:Hellenic_Academic_and_Research_Institutions_RootCA_2015.pem
+Adding debian:ACEDICOM_Root.pem
+Adding debian:TeliaSonera_Root_CA_v1.pem
+Adding debian:VeriSign_Class_3_Public_Primary_Certification_Authority_-_G5.pem
+Adding debian:COMODO_ECC_Certification_Authority.pem
+Adding debian:Entrust_Root_Certification_Authority.pem
+Adding debian:D-TRUST_Root_Class_3_CA_2_EV_2009.pem
+Adding debian:GeoTrust_Global_CA_2.pem
+Adding debian:IdenTrust_Commercial_Root_CA_1.pem
+Adding debian:Certinomis_-_Root_CA.pem
+Adding debian:Certum_Trusted_Network_CA.pem
+Adding debian:Hellenic_Academic_and_Research_Institutions_ECC_RootCA_2015.pem
+Adding debian:GeoTrust_Primary_Certification_Authority_-_G3.pem
+Adding debian:Staat_der_Nederlanden_EV_Root_CA.pem
+Adding debian:Taiwan_GRCA.pem
+Adding debian:OpenTrust_Root_CA_G2.pem
+Adding debian:ePKI_Root_Certification_Authority.pem
+Adding debian:GeoTrust_Universal_CA.pem
+Adding debian:Entrust_Root_Certification_Authority_-_G2.pem
+Adding debian:ACCVRAIZ1.pem
+Adding debian:TÜBİTAK_UEKAE_Kök_Sertifika_Hizmet_Sağlayıcısı_-_Sürüm_3.pem
+Adding debian:SecureSign_RootCA11.pem
+Adding debian:SecureTrust_CA.pem
+Adding debian:Atos_TrustedRoot_2011.pem
+Adding debian:Starfield_Root_Certificate_Authority_-_G2.pem
+Adding debian:EE_Certification_Centre_Root_CA.pem
+Adding debian:GeoTrust_Primary_Certification_Authority_-_G2.pem
+Adding debian:T-TeleSec_GlobalRoot_Class_3.pem
+Adding debian:AddTrust_Low-Value_Services_Root.pem
+Adding debian:DST_Root_CA_X3.pem
+Adding debian:thawte_Primary_Root_CA_-_G2.pem
+Adding debian:QuoVadis_Root_CA_1_G3.pem
+Adding debian:PSCProcert.pem
+Adding debian:DigiCert_Global_Root_G3.pem
+Adding debian:Certinomis_-_Autorité_Racine.pem
+Adding debian:Visa_eCommerce_Root.pem
+Adding debian:Comodo_Secure_Services_root.pem
+Adding debian:CA_Disig_Root_R1.pem
+Adding debian:IdenTrust_Public_Sector_Root_CA_1.pem
+Adding debian:QuoVadis_Root_CA_3.pem
+Adding debian:QuoVadis_Root_CA_3_G3.pem
+Adding debian:Certigna.pem
+Adding debian:Autoridad_de_Certificacion_Firmaprofesional_CIF_A62634068.pem
+Adding debian:certSIGN_ROOT_CA.pem
+Adding debian:ssl-cert-snakeoil.pem
+Adding debian:EC-ACC.pem
+Adding debian:Amazon_Root_CA_4.pem
+Adding debian:DST_ACES_CA_X6.pem
+Adding debian:Comodo_AAA_Services_root.pem
+Adding debian:Amazon_Root_CA_2.pem
+Adding debian:Swisscom_Root_CA_1.pem
+Adding debian:XRamp_Global_CA_Root.pem
+Adding debian:GlobalSign_ECC_Root_CA_-_R5.pem
+Adding debian:Secure_Global_CA.pem
+Adding debian:Camerfirma_Chambers_of_Commerce_Root.pem
+Adding debian:Trustis_FPS_Root_CA.pem
+Adding debian:Sonera_Class_2_Root_CA.pem
+Adding debian:UTN_USERFirst_Hardware_Root_CA.pem
+Adding debian:Network_Solutions_Certificate_Authority.pem
+Adding debian:SZAFIR_ROOT_CA2.pem
+Adding debian:Starfield_Services_Root_Certificate_Authority_-_G2.pem
+Adding debian:Certum_Trusted_Network_CA_2.pem
+Adding debian:GlobalSign_Root_CA_-_R2.pem
+Adding debian:Staat_der_Nederlanden_Root_CA_-_G3.pem
+Adding debian:Hongkong_Post_Root_CA_1.pem
+Adding debian:AddTrust_Qualified_Certificates_Root.pem
+Adding debian:QuoVadis_Root_CA_2.pem
+Adding debian:QuoVadis_Root_CA.pem
+Adding debian:Certplus_Root_CA_G2.pem
+Adding debian:Security_Communication_EV_RootCA1.pem
+Adding debian:Actalis_Authentication_Root_CA.pem
+Adding debian:Entrust.net_Premium_2048_Secure_Server_CA.pem
+Adding debian:thawte_Primary_Root_CA.pem
+Adding debian:DigiCert_Global_Root_CA.pem
+Adding debian:thawte_Primary_Root_CA_-_G3.pem
+Adding debian:Comodo_Trusted_Services_root.pem
+Adding debian:VeriSign_Universal_Root_Certification_Authority.pem
+Adding debian:AffirmTrust_Networking.pem
+Adding debian:AffirmTrust_Commercial.pem
+Adding debian:Swisscom_Root_CA_2.pem
+Adding debian:Izenpe.com.pem
+Adding debian:Hellenic_Academic_and_Research_Institutions_RootCA_2011.pem
+Adding debian:GeoTrust_Primary_Certification_Authority.pem
+Adding debian:D-TRUST_Root_Class_3_CA_2_2009.pem
+Adding debian:Security_Communication_RootCA2.pem
+Adding debian:USERTrust_RSA_Certification_Authority.pem
+Adding debian:CNNIC_ROOT.pem
+Adding debian:AC_RAIZ_FNMT-RCM.pem
+Adding debian:Global_Chambersign_Root_-_2008.pem
+Adding debian:Buypass_Class_3_Root_CA.pem
+Adding debian:Certplus_Class_2_Primary_CA.pem
+Adding debian:GlobalSign_Root_CA.pem
+Adding debian:USERTrust_ECC_Certification_Authority.pem
+Adding debian:AddTrust_Public_Services_Root.pem
+Adding debian:Baltimore_CyberTrust_Root.pem
+Adding debian:AddTrust_External_Root.pem
+Adding debian:Go_Daddy_Class_2_CA.pem
+Adding debian:CFCA_EV_ROOT.pem
+Adding debian:DigiCert_Assured_ID_Root_CA.pem
+Adding debian:Starfield_Class_2_CA.pem
+Adding debian:DigiCert_High_Assurance_EV_Root_CA.pem
+Adding debian:GeoTrust_Global_CA.pem
+Adding debian:OISTE_WISeKey_Global_Root_GB_CA.pem
+Adding debian:Camerfirma_Global_Chambersign_Root.pem
+Adding debian:OpenTrust_Root_CA_G3.pem
+Adding debian:Amazon_Root_CA_3.pem
+Adding debian:DigiCert_Assured_ID_Root_G2.pem
+Adding debian:E-Tugra_Certification_Authority.pem
+Adding debian:SwissSign_Gold_CA_-_G2.pem
+Adding debian:AffirmTrust_Premium_ECC.pem
+Adding debian:TWCA_Global_Root_CA.pem
+Adding debian:Buypass_Class_2_Root_CA.pem
+Adding debian:COMODO_RSA_Certification_Authority.pem
+Adding debian:China_Internet_Network_Information_Center_EV_Certificates_Root.pem
+Adding debian:NetLock_Arany_=Class_Gold=_Főtanúsítvány.pem
+Adding debian:Swisscom_Root_EV_CA_2.pem
+Adding debian:T-TeleSec_GlobalRoot_Class_2.pem
+Adding debian:CA_Disig_Root_R2.pem
+Adding debian:Microsec_e-Szigno_Root_CA_2009.pem
+Adding debian:TWCA_Root_Certification_Authority.pem
+Adding debian:AffirmTrust_Premium.pem
+Adding debian:GeoTrust_Universal_CA_2.pem
+Adding debian:TÜRKTRUST_Elektronik_Sertifika_Hizmet_Sağlayıcısı_H5.pem
+Adding debian:OISTE_WISeKey_Global_Root_GA_CA.pem
+Adding debian:GlobalSign_ECC_Root_CA_-_R4.pem
+Adding debian:DigiCert_Global_Root_G2.pem
+Adding debian:Security_Communication_Root_CA.pem
+done.
+Setting up openjdk-8-jre:amd64 (8u151-b12-0ubuntu0.16.04.2) ...
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/policytool to provide /usr/bin/policytool (policytool) in auto mode
+Setting up openjdk-8-jdk-headless:amd64 (8u151-b12-0ubuntu0.16.04.2) ...
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/bin/idlj to provide /usr/bin/idlj (idlj) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/bin/jdeps to provide /usr/bin/jdeps (jdeps) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/bin/wsimport to provide /usr/bin/wsimport (wsimport) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/bin/rmic to provide /usr/bin/rmic (rmic) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/bin/jinfo to provide /usr/bin/jinfo (jinfo) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/bin/jsadebugd to provide /usr/bin/jsadebugd (jsadebugd) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/bin/native2ascii to provide /usr/bin/native2ascii (native2ascii) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/bin/jstat to provide /usr/bin/jstat (jstat) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/bin/javadoc to provide /usr/bin/javadoc (javadoc) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/bin/javah to provide /usr/bin/javah (javah) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/bin/jstack to provide /usr/bin/jstack (jstack) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/bin/jrunscript to provide /usr/bin/jrunscript (jrunscript) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/bin/javac to provide /usr/bin/javac (javac) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/bin/jhat to provide /usr/bin/jhat (jhat) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/bin/javap to provide /usr/bin/javap (javap) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/bin/jar to provide /usr/bin/jar (jar) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/bin/extcheck to provide /usr/bin/extcheck (extcheck) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/bin/schemagen to provide /usr/bin/schemagen (schemagen) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/bin/jps to provide /usr/bin/jps (jps) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/bin/xjc to provide /usr/bin/xjc (xjc) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/bin/jmap to provide /usr/bin/jmap (jmap) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/bin/jstatd to provide /usr/bin/jstatd (jstatd) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/bin/jdb to provide /usr/bin/jdb (jdb) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/bin/serialver to provide /usr/bin/serialver (serialver) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/bin/wsgen to provide /usr/bin/wsgen (wsgen) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/bin/jcmd to provide /usr/bin/jcmd (jcmd) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/bin/jarsigner to provide /usr/bin/jarsigner (jarsigner) in auto mode
+Setting up openjdk-8-jdk:amd64 (8u151-b12-0ubuntu0.16.04.2) ...
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/bin/appletviewer to provide /usr/bin/appletviewer (appletviewer) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/bin/jconsole to provide /usr/bin/jconsole (jconsole) in auto mode
+Processing triggers for libc-bin (2.23-0ubuntu10) ...
+Processing triggers for ca-certificates (20170717~16.04.1) ...
+Updating certificates in /etc/ssl/certs...
+0 added, 0 removed; done.
+Running hooks in /etc/ca-certificates/update.d...
+
+done.
+done.
++ setUpdateState 3
++ UPDATE_STATE=3
++ doLog 'Set the update State to 3'
++ echo Set the update State to 3
+Set the update State to 3
++ echo 3
++ setUpdateState 4
++ UPDATE_STATE=4
++ doLog 'Set the update State to 4'
++ echo Set the update State to 4
+Set the update State to 4
++ echo 4
++ doLogUpdateState 'UPDATE-STATE 4'
++ doLog '########## UPDATE-STATE 4 ##########'
++ echo '##########' UPDATE-STATE 4 '##########'
+########## UPDATE-STATE 4 ##########
++ setUpdateState 5
++ UPDATE_STATE=5
++ doLog 'Set the update State to 5'
++ echo Set the update State to 5
+Set the update State to 5
++ echo 5
++ doLogUpdateState 'UPDATE-STATE 5: Ubuntu installation 4'
++ doLog '########## UPDATE-STATE 5: Ubuntu installation 4 ##########'
++ echo '##########' UPDATE-STATE 5: Ubuntu installation 4 '##########'
+########## UPDATE-STATE 5: Ubuntu installation 4 ##########
++ setUpdateState 6
++ UPDATE_STATE=6
++ doLog 'Set the update State to 6'
++ echo Set the update State to 6
+Set the update State to 6
++ echo 6
++ doLogUpdateState 'UPDATE-STATE 6a'
++ doLog '########## UPDATE-STATE 6a ##########'
++ echo '##########' UPDATE-STATE 6a '##########'
+########## UPDATE-STATE 6a ##########
++ setUpdateState 7
++ UPDATE_STATE=7
++ doLog 'Set the update State to 7'
++ echo Set the update State to 7
+Set the update State to 7
++ echo 7
++ doLogUpdateState 'UPDATE-STATE 7: 2.11 Mysql-client skipped'
++ doLog '########## UPDATE-STATE 7: 2.11 Mysql-client skipped ##########'
++ echo '##########' UPDATE-STATE 7: 2.11 Mysql-client skipped '##########'
+########## UPDATE-STATE 7: 2.11 Mysql-client skipped ##########
++ setUpdateState 8
++ UPDATE_STATE=8
++ doLog 'Set the update State to 8'
++ echo Set the update State to 8
+Set the update State to 8
++ echo 8
++ doLogUpdateState 'UPDATE-STATE 8: 3.1 Tomcat7 installation'
++ doLog '########## UPDATE-STATE 8: 3.1 Tomcat7 installation ##########'
++ echo '##########' UPDATE-STATE 8: 3.1 Tomcat7 installation '##########'
+########## UPDATE-STATE 8: 3.1 Tomcat7 installation ##########
++ package_exists tomcat7
++ dpkg -s tomcat7
++ return 1
++ apt-get -q -y -o Dpkg::Options::=--force-confdef -o Dpkg::Options::=--force-confold install tomcat7
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following additional packages will be installed:
+  authbind libcommons-collections3-java libcommons-dbcp-java
+  libcommons-pool-java libecj-java libservlet3.0-java libtomcat7-java
+  tomcat7-common
+Suggested packages:
+  libcommons-collections3-java-doc libcommons-dbcp-java-doc
+  libgeronimo-jta-1.1-spec-java ecj ant libecj-java-gcj tomcat7-docs
+  tomcat7-admin tomcat7-examples tomcat7-user libtcnative-1
+The following NEW packages will be installed:
+  authbind libcommons-collections3-java libcommons-dbcp-java
+  libcommons-pool-java libecj-java libservlet3.0-java libtomcat7-java tomcat7
+  tomcat7-common
+0 upgraded, 9 newly installed, 0 to remove and 0 not upgraded.
+Need to get 6.832 kB of archives.
+After this operation, 8.285 kB of additional disk space will be used.
+Get:1 http://archive.ubuntu.com/ubuntu xenial/main amd64 libcommons-collections3-java all 3.2.2-1 [599 kB]
+Get:2 http://archive.ubuntu.com/ubuntu xenial/main amd64 libcommons-pool-java all 1.6-2 [105 kB]
+Get:3 http://archive.ubuntu.com/ubuntu xenial/main amd64 libcommons-dbcp-java all 1.4-5ubuntu2 [148 kB]
+Get:4 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libecj-java all 3.10.1-2ubuntu1 [1.642 kB]
+Get:5 http://archive.ubuntu.com/ubuntu xenial-updates/universe amd64 libservlet3.0-java all 7.0.68-1ubuntu0.1 [302 kB]
+Get:6 http://archive.ubuntu.com/ubuntu xenial-updates/universe amd64 libtomcat7-java all 7.0.68-1ubuntu0.1 [3.715 kB]
+Get:7 http://archive.ubuntu.com/ubuntu xenial-updates/universe amd64 tomcat7-common all 7.0.68-1ubuntu0.1 [266 kB]
+Get:8 http://archive.ubuntu.com/ubuntu xenial-updates/universe amd64 tomcat7 all 7.0.68-1ubuntu0.1 [36,7 kB]
+Get:9 http://archive.ubuntu.com/ubuntu xenial/main amd64 authbind amd64 2.1.1+nmu1 [17,6 kB]
+Preconfiguring packages ...
+Fetched 6.832 kB in 0s (9.679 kB/s)
+Selecting previously unselected package libcommons-collections3-java.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 208868 files and directories currently installed.)
+Preparing to unpack .../libcommons-collections3-java_3.2.2-1_all.deb ...
+Unpacking libcommons-collections3-java (3.2.2-1) ...
+Selecting previously unselected package libcommons-pool-java.
+Preparing to unpack .../libcommons-pool-java_1.6-2_all.deb ...
+Unpacking libcommons-pool-java (1.6-2) ...
+Selecting previously unselected package libcommons-dbcp-java.
+Preparing to unpack .../libcommons-dbcp-java_1.4-5ubuntu2_all.deb ...
+Unpacking libcommons-dbcp-java (1.4-5ubuntu2) ...
+Selecting previously unselected package libecj-java.
+Preparing to unpack .../libecj-java_3.10.1-2ubuntu1_all.deb ...
+Unpacking libecj-java (3.10.1-2ubuntu1) ...
+Selecting previously unselected package libservlet3.0-java.
+Preparing to unpack .../libservlet3.0-java_7.0.68-1ubuntu0.1_all.deb ...
+Unpacking libservlet3.0-java (7.0.68-1ubuntu0.1) ...
+Selecting previously unselected package libtomcat7-java.
+Preparing to unpack .../libtomcat7-java_7.0.68-1ubuntu0.1_all.deb ...
+Unpacking libtomcat7-java (7.0.68-1ubuntu0.1) ...
+Selecting previously unselected package tomcat7-common.
+Preparing to unpack .../tomcat7-common_7.0.68-1ubuntu0.1_all.deb ...
+Unpacking tomcat7-common (7.0.68-1ubuntu0.1) ...
+Selecting previously unselected package tomcat7.
+Preparing to unpack .../tomcat7_7.0.68-1ubuntu0.1_all.deb ...
+Unpacking tomcat7 (7.0.68-1ubuntu0.1) ...
+Selecting previously unselected package authbind.
+Preparing to unpack .../authbind_2.1.1+nmu1_amd64.deb ...
+Unpacking authbind (2.1.1+nmu1) ...
+Processing triggers for systemd (229-4ubuntu21.1) ...
+Processing triggers for ureadahead (0.100.0-19) ...
+Processing triggers for man-db (2.7.5-1) ...
+Setting up libcommons-collections3-java (3.2.2-1) ...
+Setting up libcommons-pool-java (1.6-2) ...
+Setting up libcommons-dbcp-java (1.4-5ubuntu2) ...
+Setting up libecj-java (3.10.1-2ubuntu1) ...
+Setting up libservlet3.0-java (7.0.68-1ubuntu0.1) ...
+Setting up libtomcat7-java (7.0.68-1ubuntu0.1) ...
+Setting up tomcat7-common (7.0.68-1ubuntu0.1) ...
+Setting up tomcat7 (7.0.68-1ubuntu0.1) ...
+
+Creating config file /etc/default/tomcat7 with new version
+Adding system user `tomcat7' (UID 121) ...
+Adding new user `tomcat7' (UID 121) with group `tomcat7' ...
+Not creating home directory `/usr/share/tomcat7'.
+
+Creating config file /etc/logrotate.d/tomcat7 with new version
+Setting up authbind (2.1.1+nmu1) ...
+Processing triggers for systemd (229-4ubuntu21.1) ...
+Processing triggers for ureadahead (0.100.0-19) ...
++ setUpdateState 9
++ UPDATE_STATE=9
++ doLog 'Set the update State to 9'
++ echo Set the update State to 9
+Set the update State to 9
++ echo 9
++ doLogUpdateState 'UPDATE-STATE 9'
++ doLog '########## UPDATE-STATE 9 ##########'
++ echo '##########' UPDATE-STATE 9 '##########'
+########## UPDATE-STATE 9 ##########
++ setUpdateState 10
++ UPDATE_STATE=10
++ doLog 'Set the update State to 10'
++ echo Set the update State to 10
+Set the update State to 10
++ echo 10
++ doLogUpdateState 'UPDATE-State 10'
++ doLog '########## UPDATE-State 10 ##########'
++ echo '##########' UPDATE-State 10 '##########'
+########## UPDATE-State 10 ##########
++ setUpdateState 99
++ UPDATE_STATE=99
++ doLog 'Set the update State to 99'
++ echo Set the update State to 99
+Set the update State to 99
++ echo 99
++ doLogUpdateState 'UPDATE-STATE 99'
++ doLog '########## UPDATE-STATE 99 ##########'
++ echo '##########' UPDATE-STATE 99 '##########'
+########## UPDATE-STATE 99 ##########
++ setUpdateState 100
++ UPDATE_STATE=100
++ doLog 'Set the update State to 100'
++ echo Set the update State to 100
+Set the update State to 100
++ echo 100
++ touch /home/uli/Project/gnucash-build/UPDATE_FINISHED
