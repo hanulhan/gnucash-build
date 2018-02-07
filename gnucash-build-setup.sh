@@ -104,12 +104,29 @@ case $UPDATE_STATE in
 
 3) # Installation step 3
    setUpdateState 4
+   if ! package_exists intltool; then
+      apt-get -q -y -o "Dpkg::Options::=--force-confdef" -o "Dpkg::Options::=--force-confold" install intltool
+   fi
    ;&   # Fall through
 
 4) # Installation step 4: Ubuntu installation 3
 
    doLogUpdateState "UPDATE-STATE 4"
-  
+   if ! package_exists autoconf; then
+      apt-get -q -y -o "Dpkg::Options::=--force-confdef" -o "Dpkg::Options::=--force-confold" install autoconf
+   fi
+   if ! package_exists automake; then
+      apt-get -q -y -o "Dpkg::Options::=--force-confdef" -o "Dpkg::Options::=--force-confold" install automake
+   fi
+   if ! package_exists autotools-dev; then
+      apt-get -q -y -o "Dpkg::Options::=--force-confdef" -o "Dpkg::Options::=--force-confold" install autotools-dev
+   fi
+   if ! package_exists libsigsegv2; then
+      apt-get -q -y -o "Dpkg::Options::=--force-confdef" -o "Dpkg::Options::=--force-confold" install libsigsegv2
+   fi
+   if ! package_exists m4; then
+      apt-get -q -y -o "Dpkg::Options::=--force-confdef" -o "Dpkg::Options::=--force-confold" install m4
+   fi
    setUpdateState 5
    ;&   # Fall through
 
@@ -117,6 +134,12 @@ case $UPDATE_STATE in
 5) # Installation step 5
 
    doLogUpdateState "UPDATE-STATE 5: Ubuntu installation 4"
+   if ! package_exists libtool; then
+      apt-get -q -y -o "Dpkg::Options::=--force-confdef" -o "Dpkg::Options::=--force-confold" install libtool
+   fi
+   if ! package_exists libltdl-dev; then
+      apt-get -q -y -o "Dpkg::Options::=--force-confdef" -o "Dpkg::Options::=--force-confold" install libltdl-dev
+   fi
    
    setUpdateState 6
    ;&      # Fall through
@@ -124,26 +147,40 @@ case $UPDATE_STATE in
 
 6) # Installation step 6:
 
-   doLogUpdateState "UPDATE-STATE 6a"
+   doLogUpdateState "UPDATE-STATE 6"
+   if ! package_exists libglib2.0-dev; then
+      apt-get -q -y -o "Dpkg::Options::=--force-confdef" -o "Dpkg::Options::=--force-confold" install libglib2.0-dev
+   fi
    
    setUpdateState 7
    ;&      # Fall through
 
 7) # Installation step 7: Mysql-client
 
-   doLogUpdateState "UPDATE-STATE 7: 2.11 Mysql-client skipped"
+   doLogUpdateState "UPDATE-STATE 7"
+   PACKAGE=icu-devtools
+   if ! package_exists $PACKAGE; then
+      apt-get -q -y -o "Dpkg::Options::=--force-confdef" -o "Dpkg::Options::=--force-confold" install $PACKAGE
+   fi
+
+   PACKAGE=libicu-dev
+   if ! package_exists $PACKAGE; then
+      apt-get -q -y -o "Dpkg::Options::=--force-confdef" -o "Dpkg::Options::=--force-confold" install $PACKAGE
+   fi
 
    setUpdateState 8
    ;&      # Fall through
 
 8) # Install Tomcat7
 
-   doLogUpdateState "UPDATE-STATE 8: 3.1 Tomcat7 installation"
+   doLogUpdateState "UPDATE-STATE 8"
 
-   
-   if ! package_exists tomcat7; then
-      apt-get -q -y -o "Dpkg::Options::=--force-confdef" -o "Dpkg::Options::=--force-confold" install tomcat7
+
+   PACKAGE=libboost-all-dev
+   if ! package_exists $PACKAGE; then
+      apt-get -q -y -o "Dpkg::Options::=--force-confdef" -o "Dpkg::Options::=--force-confold" install $PACKAGE
    fi
+   
    setUpdateState 9
    ;&      # Fall through
 
@@ -152,18 +189,114 @@ case $UPDATE_STATE in
 
    doLogUpdateState "UPDATE-STATE 9"
 
+
+   PACKAGE=guile-2.0
+   if ! package_exists $PACKAGE; then
+      apt-get -q -y -o "Dpkg::Options::=--force-confdef" -o "Dpkg::Options::=--force-confold" install $PACKAGE
+   fi
+
+   PACKAGE=guile-2.0-dev
+   if ! package_exists $PACKAGE; then
+      apt-get -q -y -o "Dpkg::Options::=--force-confdef" -o "Dpkg::Options::=--force-confold" install $PACKAGE
+   fi
    setUpdateState 10
    ;&      # Fall through
 
 10)
    doLogUpdateState "UPDATE-State 10"
 
-   setUpdateState 99
+   PACKAGE=swig2.0
+   if ! package_exists $PACKAGE; then
+      apt-get -q -y -o "Dpkg::Options::=--force-confdef" -o "Dpkg::Options::=--force-confold" install $PACKAGE
+   fi
+   setUpdateState 11
    ;&
 
-99)
-   doLogUpdateState "UPDATE-STATE 99"
+11)
+   doLogUpdateState "UPDATE-State 11"
 
+   PACKAGE=libxml++2.6-dev
+   if ! package_exists $PACKAGE; then
+      apt-get -q -y -o "Dpkg::Options::=--force-confdef" -o "Dpkg::Options::=--force-confold" install $PACKAGE
+   fi
+   setUpdateState 12
+   ;&
+
+12)
+   doLogUpdateState "UPDATE-State 12"
+
+   PACKAGE=libxsltl-dev
+   if ! package_exists $PACKAGE; then
+      apt-get -q -y -o "Dpkg::Options::=--force-confdef" -o "Dpkg::Options::=--force-confold" install $PACKAGE
+   fi
+   setUpdateState 13
+   ;&
+
+13)
+   doLogUpdateState "UPDATE-State 13"
+
+   PACKAGE=xsltproc
+   if ! package_exists $PACKAGE; then
+      apt-get -q -y -o "Dpkg::Options::=--force-confdef" -o "Dpkg::Options::=--force-confold" install $PACKAGE
+   fi
+   setUpdateState 14
+   ;&
+
+14)
+   doLogUpdateState "UPDATE-State 14"
+
+   PACKAGE=libgtest-dev
+   if ! package_exists $PACKAGE; then
+      apt-get -q -y -o "Dpkg::Options::=--force-confdef" -o "Dpkg::Options::=--force-confold" install $PACKAGE
+   fi
+   setUpdateState 15
+   ;&
+
+15)
+   doLogUpdateState "UPDATE-State 15"
+
+   PACKAGE=google-mock
+   if ! package_exists $PACKAGE; then
+      apt-get -q -y -o "Dpkg::Options::=--force-confdef" -o "Dpkg::Options::=--force-confold" install $PACKAGE
+   fi
+   setUpdateState 16
+   ;&
+
+16)
+   doLogUpdateState "UPDATE-State 16"
+
+   PACKAGE=gtk+3.0
+   if ! package_exists $PACKAGE; then
+      apt-get -q -y -o "Dpkg::Options::=--force-confdef" -o "Dpkg::Options::=--force-confold" install $PACKAGE
+   fi
+   setUpdateState 17
+   ;&
+17)
+   doLogUpdateState "UPDATE-State 17"
+
+   PACKAGE=libgtk3.0
+   if ! package_exists $PACKAGE; then
+      apt-get -q -y -o "Dpkg::Options::=--force-confdef" -o "Dpkg::Options::=--force-confold" install $PACKAGE
+   fi
+   setUpdateState 18
+   ;&
+
+18)
+   doLogUpdateState "UPDATE-State 18"
+
+   PACKAGE=libwebkit2gtk-4.0-37
+   if ! package_exists $PACKAGE; then
+      apt-get -q -y -o "Dpkg::Options::=--force-confdef" -o "Dpkg::Options::=--force-confold" install $PACKAGE
+   fi
+   setUpdateState 19
+   ;&
+19)
+   doLogUpdateState "UPDATE-STATE 19"
+
+   PACKAGE=libwebkit2gtk-4.0-dev
+   if ! package_exists $PACKAGE; then
+      apt-get -q -y -o "Dpkg::Options::=--force-confdef" -o "Dpkg::Options::=--force-confold" install $PACKAGE
+   fi
    setUpdateState 100
    ;&
    
