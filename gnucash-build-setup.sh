@@ -225,7 +225,7 @@ case $UPDATE_STATE in
 12)
    doLogUpdateState "UPDATE-State 12"
 
-   PACKAGE=libxsltl-dev
+   PACKAGE=libxslt1-dev
    if ! package_exists $PACKAGE; then
       apt-get -q -y -o "Dpkg::Options::=--force-confdef" -o "Dpkg::Options::=--force-confold" install $PACKAGE
    fi
